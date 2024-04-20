@@ -1,0 +1,27 @@
+// vim: set syn=go:
+
+package models
+
+{% for (name, model) in models %}
+
+{% match model.schema_kind %}
+
+{% when SchemaKind::Type with (val) %}
+    {% match val %}
+    {% when Type::String with (s) %}
+        {{ name }} string
+        {% when Type::Object with (o) %}
+
+type {{ name }} struct {
+{% for (prop_name, prop) in o.properties %}
+    {{ prop_name }} string
+{%- endfor -%}
+}
+
+        {% else %}
+        {% endmatch %}
+
+{% else %}
+{% endmatch %}
+
+{% endfor %}

@@ -1,18 +1,36 @@
-# openapic
+<h1 align="center">
+openapic
+</h1>
 
-Simple openapi schema compiler in Rust. Read any openapi.yaml schema and generate code in multiple languages.
+<div align="center">
+Simple openapi schema compiler in Rust.
 
-Right now it can read openapi schema and render it to Go structs.
+Read any OpenAPI YAML schema and generate code in multiple languages.
 
-# Why and design
+Article with more info and rationale: https://chebykin.org/posts/openapic.
+</div>
 
-We want to make a simple and more embeddable openapi generator, see article: https://chebykin.org/posts/openapic for more details.
 
-Currently the CLI is build as two separate binaries:
+# Features
+
+Currently it's just a skeleton CLI which has only basic functionality:
+ - Reading OpenAPI schema.
+ - Calling different backends for generation.
+ - Rendering schema to Go structs.
+
+# Why and Design
+
+We want to make a simple and more embeddable openapi generator, see article:
+https://chebykin.org/posts/openapic for more details.
+
+Currently the CLI is built as two separate binaries:
  - frontendc - compiler entrypoint for processing OpenAPI schema
- - backendc - actual renderers to specific language.
+ - backendc - actual renderers to specific language. (only Go currently)
 
-The code in this repo is still in PoC stage, and we're open for comments and discussions about the architecture and project itself. Jump to our [Discord](https://discord.gg/Z7VPSCCn4g) channel for discussions!
+The code in this repo is still in PoC stage, and we're open for comments and
+discussions about the architecture and project itself. Jump to our
+[Discord](https://discord.gg/Z7VPSCCn4g) channel for discussions!
+
 ## Usage and Testing
 
 There are test schemas in `tests/` directory for running frontendc:
@@ -34,4 +52,5 @@ $ cargo run --bin backend-go -Z macro-backtrace < tests/req.json
 
 ## Contributing
 
-Contributions are always welcome! There's a lot of stuff to implement right now, feel free to take a look at issues.
+Contributions are always welcome! There's a lot of stuff to implement right
+now, feel free to take a look at issues.
